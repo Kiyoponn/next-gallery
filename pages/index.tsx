@@ -35,13 +35,19 @@ type Image = {
 
 const Gallery = ({ images }: { images: Image[] }) => {
   return (
-    <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
-      <div className='grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
-        {images.map((image) => (
-          <BlurImage key={image.id} image={image} />
-        ))}
+    <>
+      <h1 className='text-6xl font-black text-white text-center mt-6 lg:text-8xl'>
+        Instagram
+        <span className='text-fuchsia-400'> Gallery</span>
+      </h1>
+      <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
+        <div className='grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
+          {images.map((image) => (
+            <BlurImage key={image.id} image={image} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
@@ -65,8 +71,8 @@ function BlurImage({ image }: { image: Image }) {
           onLoadingComplete={() => setIsLoading(false)}
         />
       </div>
-      <h3 className='mt-4 test-sm text-gray-700'>{image.name}</h3>
-      <p className='mt-1 text-lg font-medium text-gray-900'>{image.username}</p>
+      <h3 className='mt-4 test-sm text-gray-200'>{image.name}</h3>
+      <p className='mt-1 text-lg font-medium text-gray-100'>{image.username}</p>
     </a>
   )
 }
