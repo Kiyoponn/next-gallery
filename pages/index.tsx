@@ -36,7 +36,7 @@ type Image = {
 const Gallery = ({ images }: { images: Image[] }) => {
   return (
     <>
-      <h1 className='text-6xl font-black text-white text-center mt-6 lg:text-8xl'>
+      <h1 className='text-6xl font-black text-white text-center mt-6 lg:text-8xl leading-tight'>
         Instagram
         <span className='text-fuchsia-400'> Gallery</span>
       </h1>
