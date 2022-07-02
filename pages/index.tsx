@@ -36,12 +36,12 @@ type Image = {
 const Gallery = ({ images }: { images: Image[] }) => {
   return (
     <>
-      <h1 className='text-6xl font-black text-white text-center mt-6 lg:text-8xl leading-tight'>
+      <h1 className='mt-6 text-center text-6xl font-black leading-tight text-white lg:text-8xl'>
         Instagram
         <span className='text-fuchsia-400'> Gallery</span>
       </h1>
-      <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
-        <div className='grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
+      <div className='mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
+        <div className='grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
           {images.map((image) => (
             <BlurImage key={image.id} image={image} />
           ))}
@@ -56,22 +56,22 @@ function BlurImage({ image }: { image: Image }) {
 
   return (
     <a href={image.href} className='group'>
-      <div className='aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden rounded-lg bg-gray-200'>
+      <div className='aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8'>
         <Image
           alt={image.name}
           src={image.imageSrc}
           layout='fill'
           objectFit='cover'
           className={cn(
-            'group-hover:opacity-75 duration-700 ease-in-out',
+            'duration-700 ease-in-out group-hover:opacity-75',
             isLoading
-              ? 'grayscale blur-2xl scale-110'
-              : 'grayscale-0 blur-0 scale-100'
+              ? 'scale-110 blur-2xl grayscale'
+              : 'scale-100 blur-0 grayscale-0'
           )}
           onLoadingComplete={() => setIsLoading(false)}
         />
       </div>
-      <h3 className='mt-4 test-sm text-gray-200'>{image.name}</h3>
+      <h3 className='test-sm mt-4 text-gray-200'>{image.name}</h3>
       <p className='mt-1 text-lg font-medium text-gray-100'>{image.username}</p>
     </a>
   )
